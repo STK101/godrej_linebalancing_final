@@ -151,7 +151,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
         change_over_time = 8 
       else:
         change_over_time = 20
-      qt = (l1.iloc[i])[-4]
+      qt = int((l1.iloc[i])[-4])
       temp_time = timer(time.hour,time.min,time.sec)
       final_time = qt*cycle_time + (qt-1)*sim_sku_change
       temp_time.add_min(final_time)

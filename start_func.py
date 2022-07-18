@@ -65,8 +65,23 @@ def starter_ex(unsequenced_schedule, file_name = 'output.xlsx' , k = 1, max_tria
         (final[0])[i].reset_index(drop = True, inplace = True)
     return final
 def sns_apc_adder(sequenced):
-    sns_pkts_apc_col = pd.read_csv("/content/SNS packets and apc colours - Sheet1.csv")
-    sns_pkts_spc_seq = pd.read_csv("/content/SNS_apc_list - Sheet1.csv")
+    sns_pkts_apc_col = pd.read_csv("SNS packets and apc colours - Sheet1.csv")
+    sns_pkts_spc_seq = pd.read_csv("SNS_apc_list - Sheet1.csv")
+    sns_pkts_apc_col_dict = dict(zip(sns_pkts_apc_col["APC ItemCode"],sns_pkts_apc_col["Colour"]))
+    sns_pkts_spc_seq.fillna("Missing", inplace = True)
+    sns_msku_ic = sns_pkts_spc_seq["Main SKU IC"]
+    sns_apc_pkt_lst = []
+    for x in range (0, len(sns_pkts_spc_seq)):
+        st = 3
+        out_arr = []
+        while (st < len(sns_pkts_spc_seq.loc[x])):
+            out_arr.append([(sns_pkts_spc_seq.loc[x])[st],(sns_pkts_spc_seq.loc[x])[st+1] ])
+            st = st + 2
+        sns_apc_pkt_lst.append([out_arr])
+    sns_pkt_apc_dict = dict(zip(sns_msku_ic,sns_apc_pkt_lst))
+    for x in range(0,len(sequenced)):
+        if (sequenced.loc[x])[2] in  sns_pkt_apc_dict.keys():
+            
     
 def output_writer(final,file_name ='output.xlsx'):
     with pd.ExcelWriter(file_name) as writer:

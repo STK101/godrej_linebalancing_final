@@ -183,6 +183,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     bpr.columns = bpr.iloc[0]
     bpr = bpr.iloc[1:]
     bpr.reset_index(inplace= True, drop = True)
+    bpr = bpr[bpr["Location"] == "Khalapur K2"]
     bpr["Product Family"] = bpr["Product Family"].apply(lambda x :family_corrector(x) )
     bpr_reg_norm =  bpr[bpr['Norm Category'] != "Ecom"] #316
     bpr_reg_norm.drop([bpr_reg_norm.columns[0]], axis = 1,inplace = True)

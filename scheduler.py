@@ -185,8 +185,13 @@ def swap(s, m, n):
       j -= 1
    return s1
 def TSP_SA(G,max_trial = 10000 ,k = 10):
+
    s = list(range(len(G)))
    c = cost(G, s)
+   if (len(G) <= 1):
+    c_arr = [c] * 10
+    s_arr = [s] * 10
+    return (c_arr,s_arr)
    c_d = deque([c])
    s_d = deque([s])
    print(c) #only for illustration purposes

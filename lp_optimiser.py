@@ -7,7 +7,13 @@ import random
 
 def family_corrector(family):
     if (family == 'SL Precoated'):
+        return 'X2 Precoated'
+    elif (family == 'SLD-SCREENPRINTING NEW'):
         return 'SL Door'
+    elif (family == 'X2 Dresser'):
+        return 'X2 Body'
+    elif (family == 'X2-SCREENPRINTING'):
+        return 'X2 Door'
     else:
         return family
 

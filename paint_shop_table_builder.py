@@ -187,7 +187,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
     else :
       cycle_time = 1
       sim_sku_change = 1
-      qt = int((l1.iloc[i])[-4])
+      qt = (l1.iloc[i])[-4]
       final_time = qt*cycle_time + (qt-1)*sim_sku_change
       temp_time.add_min(final_time)
       if (shift(time) == 2 and shift(temp_time) == 1):

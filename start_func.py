@@ -64,10 +64,7 @@ def starter_ex(unsequenced_schedule, file_name = 'output.xlsx' , k = 1, max_tria
         (final[0])[i] = (final[0])[i].loc[:, ~((final[0])[i]).columns.str.contains('^Unnamed')]
         (final[0])[i].reset_index(drop = True, inplace = True)
     return final
-def sns_apc_adder(sequenced):
-    sns_pkts_apc_col = pd.read_csv("/content/SNS packets and apc colours - Sheet1.csv")
-    sns_pkts_spc_seq = pd.read_csv("/content/SNS_apc_list - Sheet1.csv")
-    
+
 def output_writer(final,file_name ='output.xlsx'):
     with pd.ExcelWriter(file_name) as writer:
         tc = len(final[0])

@@ -81,7 +81,17 @@ def sns_apc_adder(sequenced):
     sns_pkt_apc_dict = dict(zip(sns_msku_ic,sns_apc_pkt_lst))
     for x in range(0,len(sequenced)):
         if (sequenced.loc[x])[2] in  sns_pkt_apc_dict.keys():
-            
+            date = (sequenced.loc[x])[0]
+            qty = (sequenced.loc[x])[5]
+            prior = (sequenced.loc[x])[6]
+            cur_insert = sns_pkt_apc_dict.get((sequenced.loc[x])[2])
+            cur_insert = cur_insert[0]
+            for c in range(0, len(cur_insert)):
+                index = x + (0.1*(c+1))
+                sequenced.loc[index] = [date, " ", cur_insert[c][0], cur_insert[c][1],sns_pkts_apc_col_dict.get( cur_insert[c][0]), qty, prior]
+    sequenced = sequenced.sort_index(ascending=True)
+    sequenced.reset_index(drop = True,inplace = True)
+    return sequenced
     
 def output_writer(final,file_name ='output.xlsx'):
     with pd.ExcelWriter(file_name) as writer:

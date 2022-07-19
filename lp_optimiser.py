@@ -14,6 +14,12 @@ def family_corrector(family):
         return 'X2 Body'
     elif (family == 'X2-SCREENPRINTING'):
         return 'X2 Door'
+    elif (family == 'SL Blend'):
+        return 'SL Door'
+    elif (family == 'SL Dual'):
+        return 'SL Door'
+    elif (family == 'SLIMLINE DUAL PRECOATED'):
+        return 'X2 Precoated'
     else:
         return family
 

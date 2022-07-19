@@ -328,6 +328,8 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     for i in range(0,7):
         if (mk_arr[i] != mkact_arr[i]):
             xs_arr[i] += (mk_arr[i] - mkact_arr[i])
+    print(mkact_arr)
+    print(xs_arr)
     sns_max = xs_arr[0]
     slb_max = xs_arr[1]
     sld_max = xs_arr[2]

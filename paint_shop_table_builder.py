@@ -120,7 +120,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
   l1.reset_index(drop = True, inplace = True)
   time = timer(8,30,0)
   if (len(l1) == 0):
-    return df
+    return l1
 
   time.add_min(cold_start_min)
 

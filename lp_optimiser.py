@@ -302,6 +302,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     x2p_pri1 = sum((df_make[df_make["Product Family"] == 'X2 Precoated'])["Pri1"])
     plt_pri1 = sum((df_make[df_make["Product Family"] == 'Platina'])["Pri1"])
     pri1_t = [sns_pri1,slb_pri1,sld_pri1,x2b_pri1,x2d_pri1,x2p_pri1,plt_pri1]
+    print(pri1_t)
     sns_make = min(sns_max,sns_pri1)
     slb_make = min(slb_max,slb_pri1)
     sld_make = min(sld_max,sld_pri1)
@@ -310,6 +311,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     x2p_make = min(x2p_max,x2p_pri1)
     plt_make = min(plt_max,plt_pri1)
     mk_arr_t = [sns_make,slb_make,sld_make,x2b_make,x2d_make,x2p_make,plt_make]
+    print(mk_arr_t)
     sns_xs = sns_max - sns_make
     slb_xs = slb_max - slb_make
     sld_xs = sld_max - sld_make

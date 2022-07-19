@@ -89,7 +89,7 @@ def sns_apc_adder(sequenced):
             cur_insert = cur_insert[0]
             for c in range(0, len(cur_insert)):
                 index = x + (0.1*(c+1))
-                sequenced.loc[index] = [date, " ", cur_insert[c][0], cur_insert[c][1],sns_pkts_apc_col_dict.get( cur_insert[c][0]), qty, prior]
+                sequenced.loc[index + 0.01] = [date, " ", cur_insert[c][0], cur_insert[c][1],sns_pkts_apc_col_dict.get( cur_insert[c][0]), qty, prior]
     sequenced = sequenced.sort_index(ascending=True)
     sequenced.reset_index(drop = True,inplace = True)
     return sequenced

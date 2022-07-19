@@ -352,14 +352,14 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
                 print("error")
 
     bpr_reg_norm["QTY"] = bpr_reg_norm.apply(lambda row : qty_p2(row["QTY"],row["Colour Status"][1] , row["Buffer"],row["Product Family"] ), axis = 1)
-    range_mask = np.arange(0,len(bpr_reg_norm))
-    sns_mask = range_mask[np.array((bpr_reg_norm["Product Family"] == 'Slide & Store').reset_index(drop = True))]
-    slb_mask = range_mask[np.array((bpr_reg_norm["Product Family"] == 'SL Body').reset_index(drop = True))]
-    sld_mask = range_mask[np.array((bpr_reg_norm["Product Family"] ==  'SL Door').reset_index(drop = True))]
-    x2b_mask = range_mask[np.array((bpr_reg_norm["Product Family"] == 'X2 Body').reset_index(drop = True))]
-    x2d_mask = range_mask[np.array((bpr_reg_norm["Product Family"] == 'X2 Door').reset_index(drop = True))]
-    x2p_mask = range_mask[np.array((bpr_reg_norm["Product Family"] == 'X2 Precoated').reset_index(drop = True))]
-    plt_mask = range_mask[np.array((bpr_reg_norm["Product Family"] == 'Platina').reset_index(drop = True))]
+    range_mask = (np.arange(0,len(bpr_reg_norm)))
+    sns_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'Slide & Store').reset_index(drop = True))]
+    slb_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'SL Body').reset_index(drop = True))]
+    sld_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] ==  'SL Door').reset_index(drop = True))]
+    x2b_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'X2 Body').reset_index(drop = True))]
+    x2d_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'X2 Door').reset_index(drop = True))]
+    x2p_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'X2 Precoated').reset_index(drop = True))]
+    plt_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'Platina').reset_index(drop = True))]
     sku_tp = np.array((bpr_reg_norm.iloc[:, 20]).reset_index(drop = True))
     sku_bc = np.array((bpr_reg_norm.iloc[:, 21]).reset_index(drop = True))
     sku_names = np.array(bpr_reg_norm.index)

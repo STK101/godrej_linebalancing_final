@@ -139,7 +139,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
   break_st = [br1, br2, br3]
   break_end = [bre1,bre2,bre3]
 
-
+  backlog_added = False
   cur_break = 0
   breaker = False
   bs =  False
@@ -161,6 +161,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
       if ((shift(time) == 2 and shift(temp_time) == 1) or (bset == False and shift(time) == 1)):
         if(shift(time) == 1):
           l1.loc[i - 0.2] = [" ", " ", " ", "BackLog", " ", " ", " ", " ", " "]
+          backlog_added = True
           break
         breaker = True
       if (bset and ((time_comp(break_st[cur_break], time) and time_comp(temp_time, break_st[cur_break])) or ((time_comp(time,break_st[cur_break]))))):
@@ -185,6 +186,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
       time.add_min(change_over_time)
       if (breaker):
         l1.loc[i + 0.2] = [" ", " ", " ", "BackLog", " ", " ", " ", " ", " "]
+        backlog_added = True
         break
       l1.iloc[[i+1],[-2]] = time.print_time()
     else :
@@ -210,6 +212,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
       time.add_min(final_time)
       if (breaker):
         l1.loc[i + 0.2] = [" ", " ", " ", "BackLog", " ", " ", " ", " ", " "]
+        backlog_added = True
         break
       l1.iloc[[i],[-1]] = time.print_time()
   for i in i_list:
@@ -222,6 +225,8 @@ def time_table_gen(source, line ,cold_start_min = 30):
     else:
       l1.loc[i[0] - 0.2] = [" ", " ", " ", "Break", " ", " ", " ", " ", " "]
   l1 = l1.sort_index().reset_index(drop=True)
+  if(backlog_added == False):
+    l1.iloc[len(l1)] = [" ", " ", " ", "BackLog", " ", " ", " ", " ", " "]
   l1['DATE'] = l1['DATE'].astype(str)
   return l1
 

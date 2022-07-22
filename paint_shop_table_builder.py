@@ -226,7 +226,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
       l1.loc[i[0] - 0.2] = [" ", " ", " ", "Break", " ", " ", " ", " ", " "]
   l1 = l1.sort_index().reset_index(drop=True)
   if(backlog_added == False):
-    l1.iloc[len(l1)] = [" ", " ", " ", "BackLog", " ", " ", " ", " ", " "]
+    l1.loc[len(l1)] = [" ", " ", " ", "BackLog", " ", " ", " ", " ", " "]
   l1['DATE'] = l1['DATE'].astype(str)
   return l1
 

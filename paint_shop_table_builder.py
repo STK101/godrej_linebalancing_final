@@ -143,9 +143,14 @@ def time_table_gen(source, line ,cold_start_min = 30):
   bs =  False
   i_list = []
   bset = True
+  fg_df = pd.read_csv("fg_list - Sheet1.csv")
+  fg_lis = list(fg_df["FG IC"])
   for i in range(0,len(l1)):
-    if (i < len(l1) - 1):
+    if (l1.loc[i][2] in fg_lis):
+      cycle_time = 0
+    else :
       cycle_time = 1
+    if (i < len(l1) - 1):
       sim_sku_change = 0
       change_over_time = 0
       if ( check_shade(l1.iloc[i][-5]) == check_shade(l1.iloc[i+1][-5])):
@@ -194,7 +199,6 @@ def time_table_gen(source, line ,cold_start_min = 30):
         break
       l1.iloc[[i+1],[-2]] = time.print_time()
     else :
-      cycle_time = 1
       sim_sku_change = 1
       qt = int((l1.iloc[i])[-4])
       temp_time = timer(time.hour,time.min,time.sec)

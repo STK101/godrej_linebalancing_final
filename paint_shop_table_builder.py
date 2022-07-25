@@ -164,7 +164,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
           backlog_added = True
           break
         breaker = True
-      if (bset and ((time_comp(break_st[cur_break], time) and time_comp(temp_time, break_st[cur_break])) or ((time_comp(time,break_st[cur_break]))))):
+      while (bset and ((time_comp(break_st[cur_break], time) and time_comp(temp_time, break_st[cur_break])) or ((time_comp(time,break_st[cur_break]))))):
         if((time_comp(time,break_st[cur_break]))):
           bs = True
         if (cur_break == 1):

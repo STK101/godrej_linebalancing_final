@@ -176,6 +176,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
           time.add_min(30)
           print(time.print_time())
         if (bs):
+          print("yo")
           l1.iloc[[i],[-2]] = time.print_time()
           i_list.append([i,1,cur_break])
         else:

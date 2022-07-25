@@ -71,7 +71,7 @@ def check_shade(colour):
     return 1
 
 def shift(t1):
-  if ( (t1.hour > 8 and t1.hour < 15) or (t1.hour == 8 and t1.min >= 0)):
+  if ( (t1.hour > 8 and t1.hour <= 15) or (t1.hour == 8 and t1.min >= 0)):
     return 1
   else:
     return 2
@@ -168,9 +168,13 @@ def time_table_gen(source, line ,cold_start_min = 30):
         if((time_comp(time,break_st[cur_break]))):
           bs = True
         if (cur_break == 1):
+          print("big_breal")
           time.add_min(510)
+          print(time.print_time())
         else:
+          print("small_break")
           time.add_min(30)
+          print(time.print_time())
         if (bs):
           l1.iloc[[i],[-2]] = time.print_time()
           i_list.append([i,1,cur_break])
@@ -202,7 +206,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
         if((time_comp(time,break_st[cur_break]))):
           bs = True
         if (cur_break == 1):
-          time.add_min(390)
+          time.add_min(510)
         else:
           time.add_min(30)
         if (bs):

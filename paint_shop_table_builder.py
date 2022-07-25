@@ -169,6 +169,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
           bs = True
         if (cur_break == 1):
           print("big_breal")
+          print(time.print_time())
           time.add_min(510)
           print(time.print_time())
         else:

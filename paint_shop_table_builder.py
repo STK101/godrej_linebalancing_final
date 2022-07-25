@@ -168,7 +168,7 @@ def time_table_gen(source, line ,cold_start_min = 30):
         if((time_comp(time,break_st[cur_break]))):
           bs = True
         if (cur_break == 1):
-          time.add_min(390)
+          time.add_min(510)
         else:
           time.add_min(30)
         if (bs):

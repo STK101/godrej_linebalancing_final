@@ -52,7 +52,7 @@ ictpf_dic = dict(zip(ictpf_df.index, ictpf_df['Product Family']))
 
 def backlog_reader(source):
     if (source == None):
-        return None
+        return pd.DataFrame()
     back_df = pd.read_csv(source, index_col=0)
     back_idx = -1
     for i in range(0,len(back_df)):
@@ -60,7 +60,7 @@ def backlog_reader(source):
             back_idx = i
             break
     if(back_idx == -1 or back_idx == len(back_df)-1):
-        return None
+        return pd.DataFrame()
     else:
         back_df = back_df.iloc[back_idx+1:]
         back_df = back_df[back_df.columns[:-2]]
@@ -254,7 +254,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     plt_max = 50
     present_families = ['Slide & Store' , 'SL Body', 'SL Door', 'X2 Body', 'X2 Door', 'X2 Precoated', 'Platina' ]
     blog1 = backlog_reader(backlogl1)
-    if (blog1 != None):
+    if (len(blog1) != 0):
         #blog1 = backlog_reader(backlogl1)
         for x in range(0,len(blog1)):
             if ((blog1.iloc[x])["Family"] in present_families):
@@ -277,7 +277,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
         
 
     blog2 = backlog_reader(backlogl2)
-    if (blog2 != None):
+    if (len(blog2) != 0):
         #blog2 = backlog_reader(backlogl2)
         for x in range(0,len(blog2)):
             if ((blog2.iloc[x])["Family"] in present_families):

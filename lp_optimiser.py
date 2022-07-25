@@ -59,7 +59,7 @@ def backlog_reader(source):
         if (back_df.iloc[i])["DESCRIPTION"] == "BackLog":
             back_idx = i
             break
-    if(back_idx == -1 or back_df == len(back_df)-1):
+    if(back_idx == -1 or back_idx == len(back_df)-1):
         return None
     else:
         back_df = back_df.iloc[back_idx+1:]

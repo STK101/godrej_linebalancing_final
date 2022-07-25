@@ -10,7 +10,7 @@ import scheduler
 
 def backlog_reader(source):
     if (source == None):
-        return None
+        return pd.DataFrame()
     back_df = pd.read_csv(source)
     back_idx = -1
     for i in range(0,len(back_df)):
@@ -18,7 +18,7 @@ def backlog_reader(source):
             back_idx = i
             break
     if(back_idx == -1 or back_df == len(back_df)-1):
-        return None
+        return pd.DataFrame()
     else:
         back_df = back_df.iloc[back_idx+1:]
         back_df = back_df[back_df.columns[:-2]]
@@ -50,12 +50,12 @@ def starter_ex(unsequenced_schedule, file_name = 'output.xlsx' , k = 1, max_tria
         shuffled = (df1.copy()).reset_index(drop = True)   
     blog1 = backlog_reader(backlog1)
     blog2 = backlog_reader(backlog2)
-    if (blog1 != None):
+    if (len(blog1) != 0):
         #blog1 = backlog_reader(backlog1)
         blog1.columns = shuffled.columns
         print(blog1)
         shuffled = pd.concat([shuffled,blog1], axis=0)
-    if (blog1 != None):
+    if (len(blog2) != 0):
         #blog2 = backlog_reader(backlog2)
         blog2.columns = shuffled.columns
         print(blog2)

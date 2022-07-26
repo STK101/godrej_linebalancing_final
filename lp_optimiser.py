@@ -20,6 +20,8 @@ def family_corrector(family):
         return 'SL Door'
     elif (family == 'SLIMLINE DUAL PRECOATED'):
         return 'X2 Precoated'
+    elif (family == 'Neolite'):
+        return 'Platina'
     else:
         return family
 

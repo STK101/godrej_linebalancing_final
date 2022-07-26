@@ -153,7 +153,9 @@ def time_table_gen(source, line ,cold_start_min = 30):
     if (i < len(l1) - 1):
       sim_sku_change = 0
       change_over_time = 0
-      if ( check_shade(l1.iloc[i][-5]) == check_shade(l1.iloc[i+1][-5])):
+      clr1 = re.sub("[^a-z0-9]+", '', (l1.iloc[i][-5]).lower())
+      clr2 = re.sub("[^a-z0-9]+", '', (l1.iloc[i+1][-5]).lower())
+      if ( clr1 == clr2):
         change_over_time = 8 
       else:
         change_over_time = 20

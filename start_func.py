@@ -83,6 +83,7 @@ def sns_apc_adder(sequenced):
             out_arr.append([(sns_pkts_spc_seq.loc[x])[st],(sns_pkts_spc_seq.loc[x])[st+1] ])
             st = st + 2
         sns_apc_pkt_lst.append([out_arr])
+    print(sns_apc_pkt_lst)
     sns_pkt_apc_dict = dict(zip(sns_msku_ic,sns_apc_pkt_lst))
     for x in range(0,len(sequenced)):
         if (sequenced.loc[x])[2] in  sns_pkt_apc_dict.keys():

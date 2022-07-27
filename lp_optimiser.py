@@ -408,19 +408,24 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
         col = sku_colour[i]
         if (col == "Black" and (bpr_reg_norm.iloc[i]['Norm Category']) != "Norm1"):
             sku_cost[i] = 15 + random.uniform(0,0.9) + sku_bc[i]
+            print("bl")
             bpr_reg_norm.loc[i, "Reason_PI"] = 2
         elif (col == "Red"):
             sku_cost[i] = 10 + 2*(sku_tp[i]) + random.uniform(0,0.001)
             bpr_reg_norm.loc[i, "Reason_PI"] = 3
+            print("re")
         elif (col == "Yellow"):
             sku_cost[i] = 6 + 2*(sku_tp[i]) + random.uniform(0,0.001)
             bpr_reg_norm.loc[i, "Reason_PI"] = 4
+            print("ye")
         elif (col == "Green") :
             sku_cost[i] = 3 + 2*(sku_tp[i]) + random.uniform(0,0.001)
             bpr_reg_norm.loc[i, "Reason_PI"] = 5
+            print("gr")
         else:
             sku_cost[i] = 2*(sku_tp[i]) + random.uniform(0,0.9)
             bpr_reg_norm.loc[i, "Reason_PI"] = 6
+            print("wh")
 
     sku_max = np.array((bpr_reg_norm.iloc[:, 15] - bpr_reg_norm.iloc[:, 22]).reset_index(drop = True))
 

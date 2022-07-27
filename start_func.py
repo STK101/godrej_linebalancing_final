@@ -80,8 +80,8 @@ def sns_apc_adder(sequenced):
         st = 3
         out_arr = []
         while (st < len(sns_pkts_spc_seq.loc[x])):
-            out_arr.append([(sns_pkts_spc_seq.loc[x])[st],(sns_pkts_spc_seq.loc[x])[st+1] ,(sns_pkts_spc_seq.loc[x])[st+2] ])
-            st = st + 3
+            out_arr.append([(sns_pkts_spc_seq.loc[x])[st],(sns_pkts_spc_seq.loc[x])[st+1] ])
+            st = st + 2
         sns_apc_pkt_lst.append([out_arr])
     print(sns_apc_pkt_lst)
     sns_pkt_apc_dict = dict(zip(sns_msku_ic,sns_apc_pkt_lst))
@@ -94,7 +94,7 @@ def sns_apc_adder(sequenced):
             cur_insert = cur_insert[0]
             for c in range(0, len(cur_insert)):
                 index = x + (0.1*(c+1))
-                sequenced.loc[index + 0.01] = [date, " ", cur_insert[c][0], cur_insert[c][1], cur_insert[c][2], qty, prior]
+                sequenced.loc[index + 0.01] = [date, " ", cur_insert[c][0], cur_insert[c][1],sns_pkts_apc_col_dict.get( cur_insert[c][0]), qty, prior]
     sequenced = sequenced.sort_index(ascending=True)
     sequenced.reset_index(drop = True,inplace = True)
     return sequenced

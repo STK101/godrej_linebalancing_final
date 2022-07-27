@@ -124,7 +124,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[1] > 0):
                 out += min( int (buffer * 0.05), xs_arr[1] )
                 xs_arr[1] -= min( int (buffer * 0.05), xs_arr[1] )
-            elif (out < 15 and xs_arr[1] > 0):
+            if (out < 15 and xs_arr[1] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[1])
                 xs_arr[1] -= min(incf, xs_arr[1])
@@ -134,7 +134,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[2] > 0):
                 out += min( int (buffer * 0.05), xs_arr[2] )
                 xs_arr[2] -= min( int (buffer * 0.05), xs_arr[2] )
-            elif (out < 15 and xs_arr[2] > 0):
+            if (out < 15 and xs_arr[2] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[2])
                 xs_arr[2] -= min(incf, xs_arr[2])
@@ -144,7 +144,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[3] > 0):
                 out += min( int (buffer * 0.05), xs_arr[3] )
                 xs_arr[3] -= min( int (buffer * 0.05), xs_arr[3] )
-            elif (out < 15 and xs_arr[3] > 0):
+            if (out < 15 and xs_arr[3] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[3])
                 xs_arr[3] -= min(incf, xs_arr[3])
@@ -154,7 +154,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[4] > 0):
                 out += min( int (buffer * 0.05), xs_arr[4] )
                 xs_arr[4] -= min( int (buffer * 0.05),xs_arr[4] )
-            elif (out < 15 and xs_arr[4] > 0):
+            if (out < 15 and xs_arr[4] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[4])
                 xs_arr[4] -= min(incf, xs_arr[4])
@@ -164,7 +164,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[5] > 0):
                 out += min( int (buffer * 0.05), xs_arr[5] )
                 xs_arr[5] -= min( int (buffer * 0.05), xs_arr[5] )
-            elif (out < 15 and xs_arr[5] > 0):
+            if (out < 15 and xs_arr[5] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[5])
                 xs_arr[5] -= min(incf, xs_arr[5])
@@ -174,7 +174,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[6] > 0):
                 out += min( int (buffer * 0.05), xs_arr[6] )
                 xs_arr[6] -= min( int (buffer * 0.05), xs_arr[6] )
-            elif (out < 15 and xs_arr[6] > 0):
+            if (out < 15 and xs_arr[6] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[6])
                 xs_arr[6] -= min(incf, xs_arr[6])
@@ -475,7 +475,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     out_df["PRODUCTION NO"] = " "
     out_df["COLOUR"] = out_df["Item Code"].apply(lambda x: item_col_dict.get(x))
     #(out_df[out_df["QTY"] < 15])["QTY"] = 15
-    #out_df.loc[out_df["QTY"] < 15, "QTY"] = 15 //
+    #out_df.loc[list(out_df["QTY"] < 15),list(out_df["Reason_PI"] < 6), "QTY"] = 15 //
     #out_df = out_df[out_df["QTY"] >= 15]
     out_df.reset_index(inplace = True)
     out_df = out_df[["Date","PRODUCTION NO","Item Code","Item Desc","COLOUR","QTY","Product Family","Reason_PI"]]

@@ -253,7 +253,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     x2b_max = 100
     x2d_max = 200
     x2p_max = 200
-    plt_max = 50
+    plt_max = 100
     present_families = ['Slide & Store' , 'SL Body', 'SL Door', 'X2 Body', 'X2 Door', 'X2 Precoated', 'Platina' ]
     blog1 = backlog_reader(backlogl1)
     if (len(blog1) != 0):

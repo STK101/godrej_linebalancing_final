@@ -426,7 +426,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
             sku_cost[i] = 2*(sku_tp[i]) + random.uniform(0,0.9)
             bpr_reg_norm.loc[i, "Reason_PI"] = 6
             print(bpr_reg_norm.loc[i, "Reason_PI"])
-    print(bpr_reg_norm["Reason_PI"])
+
     sku_max = np.array((bpr_reg_norm.iloc[:, 15] - bpr_reg_norm.iloc[:, 22]).reset_index(drop = True))
 
     problem = pulp.LpProblem('Production_Scheduler', pulp.LpMaximize)
@@ -472,4 +472,4 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     out_df["Product Family"] = out_df["Product Family"].map({2 : 3, '2' : 3, 1 : 1, '1' : 1})
     #(out_df[out_df["Product Family"] == 2])["Product Family"] = 3
     out_df.columns = ["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY", "Reason_PI"]
-    return out_df[["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY"]] , out_df
+    return out_df[["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY"]] , out_df, bpr_reg_norm["Reason_PI"]

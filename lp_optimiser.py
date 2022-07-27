@@ -422,6 +422,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     out_df["Product Family"] = out_df["Product Family"].apply(lambda x: family_line_dict.get(x))
     out_df["PRODUCTION NO"] = " "
     out_df["COLOUR"] = out_df["Item Code"].apply(lambda x: item_col_dict.get(x))
+    out_df[out_df["QTY"] <= 15] = 15
     #out_df = out_df[out_df["QTY"] >= 15]
     out_df.reset_index(inplace = True)
     out_df = out_df[["Date","PRODUCTION NO","Item Code","Item Desc","COLOUR","QTY","Product Family"]]

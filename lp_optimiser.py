@@ -409,27 +409,32 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
         if (col == "Black" and (bpr_reg_norm.iloc[i]['Norm Category']) != "Norm1"):
             sku_cost[i] = 15 + random.uniform(0,0.9) + sku_bc[i]
             ict = (bpr_reg_norm.index)[i]
-            bpr_reg_norm.loc[ict, "Reason_PI"] = 2
+            if (bpr_reg_norm.loc[ict]["Reason_PI"] != 1):
+                bpr_reg_norm.loc[ict, "Reason_PI"] = 2
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         elif (col == "Red"):
             sku_cost[i] = 10 + 2*(sku_tp[i]) + random.uniform(0,0.001)
             ict = (bpr_reg_norm.index)[i]
-            bpr_reg_norm.loc[ict, "Reason_PI"] = 3
+            if (bpr_reg_norm.loc[ict]["Reason_PI"] != 1):
+                bpr_reg_norm.loc[ict, "Reason_PI"] = 3
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         elif (col == "Yellow"):
             sku_cost[i] = 6 + 2*(sku_tp[i]) + random.uniform(0,0.001)
             ict = (bpr_reg_norm.index)[i]
-            bpr_reg_norm.loc[ict, "Reason_PI"] = 4
+            if (bpr_reg_norm.loc[ict]["Reason_PI"] != 1):
+                bpr_reg_norm.loc[ict, "Reason_PI"] = 4
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         elif (col == "Green") :
             sku_cost[i] = 3 + 2*(sku_tp[i]) + random.uniform(0,0.001)
             ict = (bpr_reg_norm.index)[i]
-            bpr_reg_norm.loc[ict, "Reason_PI"] = 5
+            if (bpr_reg_norm.loc[ict]["Reason_PI"] != 1):
+                bpr_reg_norm.loc[ict, "Reason_PI"] = 5
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         else:
             sku_cost[i] = 2*(sku_tp[i]) + random.uniform(0,0.9)
             ict =(bpr_reg_norm.index)[i]
-            bpr_reg_norm.loc[ict, "Reason_PI"] = 6
+            if (bpr_reg_norm.loc[ict]["Reason_PI"] != 1):
+                bpr_reg_norm.loc[ict, "Reason_PI"] = 6
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
 
     sku_max = np.array((bpr_reg_norm.iloc[:, 15] - bpr_reg_norm.iloc[:, 22]).reset_index(drop = True))

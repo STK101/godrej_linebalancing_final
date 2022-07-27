@@ -383,7 +383,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
             count_row = (df_make.loc[x, df_make.columns])
             c_row['QTY'] = count_row['QTY']
             if (count_row['QTY'] > 0):
-                bpr_reg_norm["Reason_PI"] = 1
+                c_row["Reason_PI"] = 1
             bpr_reg_norm.loc[x, bpr_reg_norm.columns] = c_row
             if ((c_row != bpr_reg_norm.loc[x, bpr_reg_norm.columns]).all()):
                 print("error")
@@ -408,19 +408,19 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
         col = sku_colour[i]
         if (col == "Black" and (bpr_reg_norm['Norm Category'])[i] != "Norm1"):
             sku_cost[i] = 15 + random.uniform(0,0.9) + sku_bc[i]
-            bpr_reg_norm["Reason_PI"] = 2
+            bpr_reg_norm["Reason_PI"][i] = 2
         elif (col == "Red"):
             sku_cost[i] = 10 + 2*(sku_tp[i]) + random.uniform(0,0.001)
-            bpr_reg_norm["Reason_PI"] = 3
+            bpr_reg_norm["Reason_PI"][i] = 3
         elif (col == "Yellow"):
             sku_cost[i] = 6 + 2*(sku_tp[i]) + random.uniform(0,0.001)
-            bpr_reg_norm["Reason_PI"] = 4
+            bpr_reg_norm["Reason_PI"][i] = 4
         elif (col == "Green") :
             sku_cost[i] = 3 + 2*(sku_tp[i]) + random.uniform(0,0.001)
-            bpr_reg_norm["Reason_PI"] = 5
+            bpr_reg_norm["Reason_PI"][i] = 5
         else:
             sku_cost[i] = 2*(sku_tp[i]) + random.uniform(0,0.9)
-            bpr_reg_norm["Reason_PI"] = 6
+            bpr_reg_norm["Reason_PI"][i] = 6
 
     sku_max = np.array((bpr_reg_norm.iloc[:, 15] - bpr_reg_norm.iloc[:, 22]).reset_index(drop = True))
 

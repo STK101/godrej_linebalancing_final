@@ -114,42 +114,70 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[0] > 0):
                 out += min( int (buffer * 0.05), xs_arr[0] )
                 xs_arr[0] -= min( int (buffer * 0.05), xs_arr[0] )
+            elif (out < 15 and xs_arr[0] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[0])
+                xs_arr[0] -= min(incf, xs_arr[0])
         if (family =='SL Body' ):
             out += int(qty*mk_arr[1]/pri1[1])
             mkact_arr[1] += out
             if (colour == "Black" and xs_arr[1] > 0):
                 out += min( int (buffer * 0.05), xs_arr[1] )
                 xs_arr[1] -= min( int (buffer * 0.05), xs_arr[1] )
+            elif (out < 15 and xs_arr[1] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[1])
+                xs_arr[1] -= min(incf, xs_arr[1])
         if (family =='SL Door' ):
             out += int(qty*mk_arr[2]/pri1[2])
             mkact_arr[2] += out
             if (colour == "Black" and xs_arr[2] > 0):
                 out += min( int (buffer * 0.05), xs_arr[2] )
                 xs_arr[2] -= min( int (buffer * 0.05), xs_arr[2] )
+            elif (out < 15 and xs_arr[2] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[2])
+                xs_arr[2] -= min(incf, xs_arr[2])
         if (family =='X2 Body' ):
             out += int(qty*mk_arr[3]/pri1[3])
             mkact_arr[3] += out
             if (colour == "Black" and xs_arr[3] > 0):
                 out += min( int (buffer * 0.05), xs_arr[3] )
                 xs_arr[3] -= min( int (buffer * 0.05), xs_arr[3] )
+            elif (out < 15 and xs_arr[3] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[3])
+                xs_arr[3] -= min(incf, xs_arr[3])
         if (family =='X2 Door' ):
             out += int(qty*mk_arr[4]/pri1[4])
             mkact_arr[4] += out
             if (colour == "Black" and xs_arr[4] > 0):
                 out += min( int (buffer * 0.05), xs_arr[4] )
                 xs_arr[4] -= min( int (buffer * 0.05),xs_arr[4] )
+            elif (out < 15 and xs_arr[4] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[4])
+                xs_arr[4] -= min(incf, xs_arr[4])
         if (family =='X2 Precoated' ):
             out += int(qty*mk_arr[5]/pri1[5])
             mkact_arr[5] += out
             if (colour == "Black" and xs_arr[5] > 0):
                 out += min( int (buffer * 0.05), xs_arr[5] )
                 xs_arr[5] -= min( int (buffer * 0.05), xs_arr[5] )
+            elif (out < 15 and xs_arr[5] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[5])
+                xs_arr[5] -= min(incf, xs_arr[5])
         if (family =='Platina' ):
             out += int(qty*mk_arr[6]/pri1[6])
             mkact_arr[6] += out
             if (colour == "Black" and xs_arr[6] > 0):
                 out += min( int (buffer * 0.05), xs_arr[6] )
                 xs_arr[6] -= min( int (buffer * 0.05), xs_arr[6] )
+            elif (out < 15 and xs_arr[6] > 0):
+                incf = 15 - out
+                out += min(incf, xs_arr[6])
+                xs_arr[6] -= min(incf, xs_arr[6])
         return out
 
 def qty_p2(qty, colour, buffer, family):
@@ -157,32 +185,32 @@ def qty_p2(qty, colour, buffer, family):
     if (colour == "Black" and qty == 0):
         if (family =="Slide & Store" ):
             if (max_arr[0] > 0):
-                out += min( int (buffer * 0.05), max_arr[0] )
-                max_arr[0] -= min( int (buffer * 0.05), max_arr[0] )
+                out += min( int (15), max_arr[0] )
+                max_arr[0] -= min( int (15), max_arr[0] )
         if (family =='SL Body' ):
             if (max_arr[1] > 0):
-                out += min( int (buffer * 0.05), max_arr[1] )
-                max_arr[1] -= min( int (buffer * 0.05), max_arr[1])
+                out += min( int (15), max_arr[1] )
+                max_arr[1] -= min( int (15), max_arr[1])
         if (family =='SL Door' ):
             if (max_arr[2] > 0):
-                out += min( int (buffer * 0.05), max_arr[2] )
-                max_arr[2] -= min( int (buffer * 0.05), max_arr[2] )
+                out += min( int (15), max_arr[2] )
+                max_arr[2] -= min( int (15), max_arr[2] )
         if (family =='X2 Body' ):
             if (max_arr[3] > 0):
-                out += min( int (buffer * 0.05), max_arr[3] )
-                max_arr[3] -= min( int (buffer * 0.05), max_arr[3] )
+                out += min( int (15), max_arr[3] )
+                max_arr[3] -= min( int (15), max_arr[3] )
         if (family =='X2 Door' ):
             if (max_arr[4] > 0):
-                out += min( int (buffer * 0.05), max_arr[4] )
-                max_arr[4] -= min( int (buffer * 0.05), max_arr[4] )
+                out += min( int (15), max_arr[4] )
+                max_arr[4] -= min( int (15), max_arr[4] )
         if (family =='X2 Precoated' ):
             if (max_arr[5] > 0):
-                out += min( int (buffer * 0.05), max_arr[5])
-                max_arr[5] -= min( int (buffer * 0.05), max_arr[5] )
+                out += min( int (15), max_arr[5])
+                max_arr[5] -= min( int (15), max_arr[5] )
         if (family =='Platina' ):
             if (max_arr[6] > 0):
-                out += min( int (buffer * 0.05), max_arr[6] )
-                max_arr[6] -= min( int (buffer * 0.05), max_arr[6] )
+                out += min( int (15), max_arr[6] )
+                max_arr[6] -= min( int (15), max_arr[6] )
     return out
 
 def d_scheduler(source, backlogl1 = None, backlogl2 = None):
@@ -346,6 +374,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     x2p_max = xs_arr[5]
     plt_max = xs_arr[6]
     max_arr_t = [sns_max,slb_max,sld_max,x2b_max,x2d_max,x2p_max,plt_max]
+    bpr_reg_norm["Reason_PI"] = 10
     for i in range(0,7):
         max_arr[i] = max_arr_t[i]
     for x in df_make.index:
@@ -353,11 +382,14 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
             c_row = bpr_reg_norm.loc[x, bpr_reg_norm.columns]
             count_row = (df_make.loc[x, df_make.columns])
             c_row['QTY'] = count_row['QTY']
+            if (count_row['QTY'] > 0):
+                bpr_reg_norm["Reason_PI"] = 1
             bpr_reg_norm.loc[x, bpr_reg_norm.columns] = c_row
             if ((c_row != bpr_reg_norm.loc[x, bpr_reg_norm.columns]).all()):
                 print("error")
 
     bpr_reg_norm["QTY"] = bpr_reg_norm.apply(lambda row : qty_p2(row["QTY"],row["Colour Status"][1] , row["Buffer"],row["Product Family"] ), axis = 1)
+
     range_mask = (np.arange(0,len(bpr_reg_norm)))
     sns_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'Slide & Store').reset_index(drop = True))]
     slb_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'SL Body').reset_index(drop = True))]
@@ -374,16 +406,21 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     sku_cost = [0]*n
     for i in range(0,n):
         col = sku_colour[i]
-        if (col == "Black"):
+        if (col == "Black" and (bpr_reg_norm['Norm Category'])[i] != "Norm1"):
             sku_cost[i] = 15 + random.uniform(0,0.9) + sku_bc[i]
+            bpr_reg_norm["Reason_PI"] = 2
         elif (col == "Red"):
             sku_cost[i] = 10 + 2*(sku_tp[i]) + random.uniform(0,0.001)
+            bpr_reg_norm["Reason_PI"] = 3
         elif (col == "Yellow"):
             sku_cost[i] = 6 + 2*(sku_tp[i]) + random.uniform(0,0.001)
+            bpr_reg_norm["Reason_PI"] = 4
         elif (col == "Green") :
             sku_cost[i] = 3 + 2*(sku_tp[i]) + random.uniform(0,0.001)
+            bpr_reg_norm["Reason_PI"] = 5
         else:
             sku_cost[i] = 2*(sku_tp[i]) + random.uniform(0,0.9)
+            bpr_reg_norm["Reason_PI"] = 6
 
     sku_max = np.array((bpr_reg_norm.iloc[:, 15] - bpr_reg_norm.iloc[:, 22]).reset_index(drop = True))
 
@@ -412,13 +449,13 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
 
     out_df = bpr_reg_norm[bpr_reg_norm["QTY"] > 0]
 
-    out_df = out_df[["Item Desc","Product Family","QTY"]]
+    out_df = out_df[["Item Desc","Product Family","QTY","Reason_PI"]]
 
     out_df.reset_index(inplace = True)
 
     out_df["Date"] = date
 
-    out_df = out_df[["Date","Item Code","Item Desc", "Product Family","QTY"]]
+    out_df = out_df[["Date","Item Code","Item Desc", "Product Family","QTY","Reason_PI"]]
     out_df["Product Family"] = out_df["Product Family"].apply(lambda x: family_line_dict.get(x))
     out_df["PRODUCTION NO"] = " "
     out_df["COLOUR"] = out_df["Item Code"].apply(lambda x: item_col_dict.get(x))
@@ -426,8 +463,8 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     out_df.loc[out_df["QTY"] < 15, "QTY"] = 15
     #out_df = out_df[out_df["QTY"] >= 15]
     out_df.reset_index(inplace = True)
-    out_df = out_df[["Date","PRODUCTION NO","Item Code","Item Desc","COLOUR","QTY","Product Family"]]
+    out_df = out_df[["Date","PRODUCTION NO","Item Code","Item Desc","COLOUR","QTY","Product Family","Reason_PI"]]
     out_df["Product Family"] = out_df["Product Family"].map({2 : 3, '2' : 3, 1 : 1, '1' : 1})
     #(out_df[out_df["Product Family"] == 2])["Product Family"] = 3
-    out_df.columns = ["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY"]
-    return out_df
+    out_df.columns = ["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY", "Reason_PI"]
+    return out_df[["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY"]] , out_df

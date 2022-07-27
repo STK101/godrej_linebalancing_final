@@ -406,7 +406,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     sku_cost = [0]*n
     for i in range(0,n):
         col = sku_colour[i]
-        if (col == "Black" and (bpr_reg_norm['Norm Category'])[i] != "Norm1"):
+        if (col == "Black" and (bpr_reg_norm.iloc[i]['Norm Category']) != "Norm1"):
             sku_cost[i] = 15 + random.uniform(0,0.9) + sku_bc[i]
             bpr_reg_norm.at[i, "Reason_PI"] = 2
         elif (col == "Red"):

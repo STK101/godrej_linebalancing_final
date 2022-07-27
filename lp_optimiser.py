@@ -408,27 +408,27 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
         col = sku_colour[i]
         if (col == "Black" and (bpr_reg_norm.iloc[i]['Norm Category']) != "Norm1"):
             sku_cost[i] = 15 + random.uniform(0,0.9) + sku_bc[i]
-            ict = bpr_reg_norm.iloc[i]["Item Code"]
+            ict = (bpr_reg_norm.index)[i]
             bpr_reg_norm.loc[ict, "Reason_PI"] = 2
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         elif (col == "Red"):
             sku_cost[i] = 10 + 2*(sku_tp[i]) + random.uniform(0,0.001)
-            ict = bpr_reg_norm.iloc[i]["Item Code"]
+            ict = (bpr_reg_norm.index)[i]
             bpr_reg_norm.loc[ict, "Reason_PI"] = 3
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         elif (col == "Yellow"):
             sku_cost[i] = 6 + 2*(sku_tp[i]) + random.uniform(0,0.001)
-            ict = bpr_reg_norm.iloc[i]["Item Code"]
+            ict = (bpr_reg_norm.index)[i]
             bpr_reg_norm.loc[ict, "Reason_PI"] = 4
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         elif (col == "Green") :
             sku_cost[i] = 3 + 2*(sku_tp[i]) + random.uniform(0,0.001)
-            ict = bpr_reg_norm.iloc[i]["Item Code"]
+            ict = (bpr_reg_norm.index)[i]
             bpr_reg_norm.loc[ict, "Reason_PI"] = 5
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
         else:
             sku_cost[i] = 2*(sku_tp[i]) + random.uniform(0,0.9)
-            ict = bpr_reg_norm.iloc[i]["Item Code"]
+            ict =(bpr_reg_norm.index)[i]
             bpr_reg_norm.loc[ict, "Reason_PI"] = 6
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
 
@@ -470,7 +470,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     out_df["PRODUCTION NO"] = " "
     out_df["COLOUR"] = out_df["Item Code"].apply(lambda x: item_col_dict.get(x))
     #(out_df[out_df["QTY"] < 15])["QTY"] = 15
-    out_df.loc[out_df["QTY"] < 15, "QTY"] = 15
+    #out_df.loc[out_df["QTY"] < 15, "QTY"] = 15 //
     #out_df = out_df[out_df["QTY"] >= 15]
     out_df.reset_index(inplace = True)
     out_df = out_df[["Date","PRODUCTION NO","Item Code","Item Desc","COLOUR","QTY","Product Family","Reason_PI"]]

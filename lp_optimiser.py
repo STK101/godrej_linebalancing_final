@@ -114,7 +114,7 @@ def qty_p1(qty, family,colour, buffer):
             if (colour == "Black" and xs_arr[0] > 0):
                 out += min( int (buffer * 0.05), xs_arr[0] )
                 xs_arr[0] -= min( int (buffer * 0.05), xs_arr[0] )
-            elif (out < 15 and xs_arr[0] > 0):
+            if (out < 15 and xs_arr[0] > 0):
                 incf = 15 - out
                 out += min(incf, xs_arr[0])
                 xs_arr[0] -= min(incf, xs_arr[0])

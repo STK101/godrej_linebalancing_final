@@ -459,12 +459,58 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     problem += f
 
     status = problem.solve()
+    ns_arr = [max_arr[0],max_arr[1],max_arr[2],max_arr[3],max_arr[4],max_arr[5],max_arr[6]]
+    for i in range(0, len(problem.variables())):
+        if (i in sns_mask):
+            ns_arr[0] -= ((problem.variables())[i]).value()
+        elif (i in slb_mask):
+            ns_arr[1] -= ((problem.variables())[i]).value()
+        elif (i in sld_mask):
+            ns_arr[2] -= ((problem.variables())[i]).value()
+        elif (i in x2b_mask):
+            ns_arr[3] -= ((problem.variables())[i]).value()
+        elif (i in x2d_mask):
+            ns_arr[4] -= ((problem.variables())[i]).value()
+        elif( i in x2p_mask):
+            ns_arr[5] -= ((problem.variables())[i]).value()
+        elif (i in plt_mask):
+            ns_arr[6] -= ((problem.variables())[i]).value()
 
     for var in problem.variables():
         if(var.value() != 0):
             #print(f"{var.name}: {var.value()}")
             c_row = bpr_reg_norm.loc[var.name, bpr_reg_norm.columns]
             c_row['QTY'] += var.value()
+            if (c_row['QTY'] < 15):
+                pf = c_row["Product Family"]
+                if (pf =="Slide & Store" ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[0],xtra)
+                    ns_arr[0] -= min(ns_arr[0],xtra)
+                if (pf =='SL Body' ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[1],xtra)
+                    ns_arr[1] -= min(ns_arr[1],xtra)
+                if (pf =='SL Door' ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[2],xtra)
+                    ns_arr[2] -= min(ns_arr[2],xtra)
+                if (pf =='X2 Body' ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[3],xtra)
+                    ns_arr[3] -= min(ns_arr[3],xtra)
+                if (pf =='X2 Door' ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[4],xtra)
+                    ns_arr[4] -= min(ns_arr[4],xtra)
+                if (pf =='X2 Precoated' ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[5],xtra)
+                    ns_arr[5] -= min(ns_arr[5],xtra)
+                if (pf =='Platina' ):
+                    xtra = 15 - c_row['QTY']
+                    c_row['QTY'] += min(ns_arr[5],xtra)
+                    ns_arr[5] -= min(ns_arr[5],xtra)
             bpr_reg_norm.loc[var.name, bpr_reg_norm.columns] = c_row
 
     #bpr_reg_norm.to_excel('quantity.xlsx')

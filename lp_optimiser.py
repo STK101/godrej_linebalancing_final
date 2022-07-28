@@ -374,6 +374,9 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     x2p_max = xs_arr[5]
     plt_max = xs_arr[6]
     max_arr_t = [sns_max,slb_max,sld_max,x2b_max,x2d_max,x2p_max,plt_max]
+    temp_bpr = pd.DataFrame()
+    temp_bpr.index = bpr_reg_norm.index
+    temp_bpr["Made QT"] = 0
     bpr_reg_norm["Reason_PI"] = 10
     for i in range(0,7):
         max_arr[i] = max_arr_t[i]
@@ -384,12 +387,16 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
             c_row['QTY'] = count_row['QTY']
             if (count_row['QTY'] > 0):
                 c_row["Reason_PI"] = 1
+                temp_bpr.loc[x, "Made QT"] = c_row['QTY']
             bpr_reg_norm.loc[x, bpr_reg_norm.columns] = c_row
             if ((c_row != bpr_reg_norm.loc[x, bpr_reg_norm.columns]).all()):
                 print("error")
 
     bpr_reg_norm["QTY"] = bpr_reg_norm.apply(lambda row : qty_p2(row["QTY"],row["Colour Status"][1] , row["Buffer"],row["Product Family"] ), axis = 1)
-
+    for x in bpr_reg_norm.index:
+        if  ((bpr_reg_norm.loc[x])['QTY'] > 0) and ((temp_bpr.loc[x])["Made QT"] == 0) :
+            temp_bpr.loc[x, "Made QT"] = (bpr_reg_norm.loc[x])['QTY']
+    
     range_mask = (np.arange(0,len(bpr_reg_norm)))
     sns_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'Slide & Store').reset_index(drop = True))]
     slb_mask = (np.arange(0,len(bpr_reg_norm)))[np.array((bpr_reg_norm["Product Family"] == 'SL Body').reset_index(drop = True))]
@@ -437,8 +444,8 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
                 bpr_reg_norm.loc[ict, "Reason_PI"] = 6
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
 
-    sku_max = np.array((bpr_reg_norm.iloc[:, 15] - bpr_reg_norm.iloc[:, 22]).reset_index(drop = True))
-
+    sku_max = np.array((bpr_reg_norm.iloc[:, 15] - temp_bpr.iloc[:, 0]).reset_index(drop = True))
+    print(sku_max)
     problem = pulp.LpProblem('Production_Scheduler', pulp.LpMaximize)
     p = [pulp.LpVariable(sku_names[i], lowBound = 0, upBound = sku_max[i], cat = "Integer") for i in range(0,len(sku_names)) ]
     f= pulp.LpAffineExpression( [(p[i],sku_cost[i]) for i in range(0,len(sku_names))])

@@ -110,7 +110,7 @@ def qty_p1(qty, family,colour, buffer):
         out = 0
         if (family =="Slide & Store" ):
             out += int(qty*mk_arr[0]/pri1[0])
-            mkact_arr[0] += out
+            
             if (colour == "Black" and xs_arr[0] > 0):
                 out += min( int (buffer * 0.05), xs_arr[0] )
                 xs_arr[0] -= min( int (buffer * 0.05), xs_arr[0] )
@@ -118,9 +118,10 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[0])
                 xs_arr[0] -= min(incf, xs_arr[0])
+            mkact_arr[0] += out
         if (family =='SL Body' ):
             out += int(qty*mk_arr[1]/pri1[1])
-            mkact_arr[1] += out
+            
             if (colour == "Black" and xs_arr[1] > 0):
                 out += min( int (buffer * 0.05), xs_arr[1] )
                 xs_arr[1] -= min( int (buffer * 0.05), xs_arr[1] )
@@ -128,9 +129,10 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[1])
                 xs_arr[1] -= min(incf, xs_arr[1])
+            mkact_arr[1] += out
         if (family =='SL Door' ):
             out += int(qty*mk_arr[2]/pri1[2])
-            mkact_arr[2] += out
+            
             if (colour == "Black" and xs_arr[2] > 0):
                 out += min( int (buffer * 0.05), xs_arr[2] )
                 xs_arr[2] -= min( int (buffer * 0.05), xs_arr[2] )
@@ -138,9 +140,10 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[2])
                 xs_arr[2] -= min(incf, xs_arr[2])
+            mkact_arr[2] += out
         if (family =='X2 Body' ):
             out += int(qty*mk_arr[3]/pri1[3])
-            mkact_arr[3] += out
+            
             if (colour == "Black" and xs_arr[3] > 0):
                 out += min( int (buffer * 0.05), xs_arr[3] )
                 xs_arr[3] -= min( int (buffer * 0.05), xs_arr[3] )
@@ -148,9 +151,10 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[3])
                 xs_arr[3] -= min(incf, xs_arr[3])
+            mkact_arr[3] += out
         if (family =='X2 Door' ):
             out += int(qty*mk_arr[4]/pri1[4])
-            mkact_arr[4] += out
+            
             if (colour == "Black" and xs_arr[4] > 0):
                 out += min( int (buffer * 0.05), xs_arr[4] )
                 xs_arr[4] -= min( int (buffer * 0.05),xs_arr[4] )
@@ -158,9 +162,10 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[4])
                 xs_arr[4] -= min(incf, xs_arr[4])
+            mkact_arr[4] += out
         if (family =='X2 Precoated' ):
             out += int(qty*mk_arr[5]/pri1[5])
-            mkact_arr[5] += out
+
             if (colour == "Black" and xs_arr[5] > 0):
                 out += min( int (buffer * 0.05), xs_arr[5] )
                 xs_arr[5] -= min( int (buffer * 0.05), xs_arr[5] )
@@ -168,9 +173,10 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[5])
                 xs_arr[5] -= min(incf, xs_arr[5])
+            mkact_arr[5] += out
         if (family =='Platina' ):
             out += int(qty*mk_arr[6]/pri1[6])
-            mkact_arr[6] += out
+            
             if (colour == "Black" and xs_arr[6] > 0):
                 out += min( int (buffer * 0.05), xs_arr[6] )
                 xs_arr[6] -= min( int (buffer * 0.05), xs_arr[6] )
@@ -178,6 +184,7 @@ def qty_p1(qty, family,colour, buffer):
                 incf = 15 - out
                 out += min(incf, xs_arr[6])
                 xs_arr[6] -= min(incf, xs_arr[6])
+            mkact_arr[6] += out
         return out
 
 def qty_p2(qty, colour, buffer, family):

@@ -444,7 +444,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
                 bpr_reg_norm.loc[ict, "Reason_PI"] = 6
             #print(bpr_reg_norm.loc[i, "Reason_PI"])
 
-    sku_max = np.array((bpr_reg_norm.iloc[:, 15] - temp_bpr.iloc[:, 0]).reset_index(drop = True))
+    sku_max = np.maximum(np.array((bpr_reg_norm.iloc[:, 15] - temp_bpr.iloc[:, 0]).reset_index(drop = True)),0)
     print(sku_max)
     problem = pulp.LpProblem('Production_Scheduler', pulp.LpMaximize)
     p = [pulp.LpVariable(sku_names[i], lowBound = 0, upBound = sku_max[i], cat = "Integer") for i in range(0,len(sku_names)) ]

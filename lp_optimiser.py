@@ -461,6 +461,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     status = problem.solve()
     ns_arr = [max_arr[0],max_arr[1],max_arr[2],max_arr[3],max_arr[4],max_arr[5],max_arr[6]]
     print(ns_arr)
+    print(problem.variables())
     for i in range(0, len(problem.variables())):
         if (i in sns_mask):
             ns_arr[0] -= ((problem.variables())[i]).value()

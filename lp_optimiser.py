@@ -489,4 +489,4 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     out_df["Product Family"] = out_df["Product Family"].map({2 : 3, '2' : 3, 1 : 1, '1' : 1})
     #(out_df[out_df["Product Family"] == 2])["Product Family"] = 3
     out_df.columns = ["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY", "Reason_PI"]
-    return out_df[["DATE","PRODUCTION NO","ITEMCODE","DESCRIPTION","COLOUR" ,"QTY", "PRIORITY"]] , out_df, bpr_reg_norm
+    return  out_df

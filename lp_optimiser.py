@@ -512,7 +512,7 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
                     c_row['QTY'] += min(ns_arr[5],xtra)
                     ns_arr[5] -= min(ns_arr[5],xtra)
             bpr_reg_norm.loc[var.name, bpr_reg_norm.columns] = c_row
-
+    print(ns_arr)
     #bpr_reg_norm.to_excel('quantity.xlsx')
 
     out_df = bpr_reg_norm[bpr_reg_norm["QTY"] > 0]

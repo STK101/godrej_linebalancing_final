@@ -462,7 +462,9 @@ def d_scheduler(source, backlogl1 = None, backlogl2 = None):
     ns_arr = [max_arr[0],max_arr[1],max_arr[2],max_arr[3],max_arr[4],max_arr[5],max_arr[6]]
     print(ns_arr)
     print(problem.variables())
-    for i in range(0, len(problem.variables())):
+    for j in range(0, len(problem.variables())):
+        ic = (np.array(bpr_reg_norm.index))
+        i = (np.where(ic == j))[0]
         if (i in sns_mask):
             ns_arr[0] -= ((problem.variables())[i]).value()
         elif (i in slb_mask):
